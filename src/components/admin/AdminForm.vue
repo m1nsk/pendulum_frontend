@@ -5,9 +5,9 @@
 </template>
 
 <script>
-  import Form from "../Form"
+  import Form from "@/components/Form"
   import VueFormGenerator from "vue-form-generator"
-  import {createUser} from '@/api/user'
+  import {createUser} from '@/api/profile'
   export default {
     name: 'UserForm',
     components: {

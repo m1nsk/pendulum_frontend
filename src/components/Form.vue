@@ -25,6 +25,7 @@
       submitForm() {
         let promise = this.submitFunction(this.model)
         promise.then((response) => {
+          console.log('!!!!!!!!!!!!!!!!!!!!1')
           this.$router.go(-1)
         })
       }

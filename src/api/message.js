@@ -1,24 +1,22 @@
-import axios from 'axios'
-import {initAxios} from './index'
+import {client} from './client'
 
-initAxios()
 
 export function getMessageList () {
-  return axios.get('/message')
+  return client.get('/message')
 }
 
 export function getMessage (id) {
-  return axios.get('/message/' + id)
+  return client.get('/message/' + id)
 }
 
 export function deleteMessage (id) {
-  return axios.delete('/message/' + id)
+  return client.delete('/message/' + id)
 }
 
 export function createMessage (formData) {
-  return axios.post('/message', formData)
+  return client.post('/message', formData)
 }
 
 export function editMessage (formData, id) {
-  return axios.put('/message/' + id, formData)
+  return client.put('/message/' + id, formData)
 }

@@ -7,7 +7,7 @@
 <script>
   import Form from "@/components/Form"
   import VueFormGenerator from "vue-form-generator"
-  import {editUser, getUser} from '@/api/profile'
+  import {editUser, getUser} from '@/api/admin'
   export default {
     name: 'UserForm',
     components: {
@@ -49,7 +49,9 @@
                 model: "email",
                 placeholder: "User's e-mail address",
                 validator: VueFormGenerator.validators.email
-              }]
+              },
+
+            ]
           },
           formOptions: {
             validateAfterLoad: true,

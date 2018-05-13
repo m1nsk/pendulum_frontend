@@ -1,24 +1,22 @@
-import axios from 'axios'
-import {initAxios} from './index'
+import {client} from './client'
 
-initAxios()
 
 export function getChannelList () {
-  return axios.get('/channel')
+  return client.get('/channel')
 }
 
 export function getChannel (id) {
-  return axios.get('/channel/' + id)
+  return client.get('/channel/' + id)
 }
 
 export function deleteChannel (id) {
-  return axios.delete('/channel/' + id)
+  return client.delete('/channel/' + id)
 }
 
 export function createChannel (formData) {
-  return axios.post('/channel', formData)
+  return client.post('/channel', formData)
 }
 
 export function editChannel (formData, id) {
-  return axios.put('/channel/' + id, formData)
+  return client.put('/channel/' + id, formData)
 }

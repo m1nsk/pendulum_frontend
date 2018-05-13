@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import Form from "../Form"
+  import Form from "@/components/Form"
   import VueFormGenerator from "vue-form-generator"
   import {createMessage} from '@/api/message'
   export default {

@@ -1,50 +1,43 @@
 <template>
   <div style="width: 50%; margin: 0 auto">
-    <device-form :schema="schema" :model="model" :submitFunction="submitFunction"></device-form>
+    <login-form :schema="schema" :model="model" :submitFunction="submitFunction"></login-form>
   </div>
 </template>
 
 <script>
   import Form from "@/components/Form"
   import VueFormGenerator from "vue-form-generator"
-  import {createDevice} from '@/api/device'
+  import {login} from '@/api/login'
   export default {
-    name: 'DeviceForm',
+    name: 'LoginForm',
     components: {
-      "device-form": Form
+      "login-form": Form
     },
     data () {
       return {
-        submitFunction: createDevice,
+        submitFunction: login,
         model: {
-          name: "",
-          serial: ""
+          username: "",
+          password: ""
         },
         schema: {
           schema: {
             fields: [{
               type: "input",
               inputType: "text",
-              label: "Name",
-              model: "name",
-              readonly: false,
-              featured: true,
+              label: "E-mail",
+              model: "username",
               required: true,
-              disabled: false,
-              placeholder: "Device's name",
+              placeholder: "username",
               validator: VueFormGenerator.validators.string
             }, {
               type: "input",
-              inputType: "text",
-              label: "Serial",
-              model: "serial",
-              readonly: false,
-              featured: true,
+              inputType: "password",
+              label: "Password",
+              model: "password",
               required: true,
-              disabled: false,
-              placeholder: "Device's name",
               validator: VueFormGenerator.validators.string
-            },]
+            }]
           },
           formOptions: {
             validateAfterLoad: true,

@@ -1,24 +1,22 @@
-import axios from 'axios'
-import {initAxios} from './index'
+import {client} from './client'
 
-initAxios()
 
 export function getDeviceList () {
-  return axios.get('/device')
+  return client.get('/device')
 }
 
 export function getDevice (id) {
-  return axios.get('/device/' + id)
+  return client.get('/device/' + id)
 }
 
 export function deleteDevice (id) {
-  return axios.delete('/device/' + id)
+  return client.delete('/device/' + id)
 }
 
 export function createDevice (formData) {
-  return axios.post('/device', formData)
+  return client.post('/device', formData)
 }
 
 export function editDevice (formData, id) {
-  return axios.put('/device/' + id, formData)
+  return client.put('/device/' + id, formData)
 }

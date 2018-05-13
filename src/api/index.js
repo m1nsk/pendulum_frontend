@@ -1,11 +1,16 @@
 import axios from 'axios'
 
-import { API_HOST, API_PORT } from '../api/config'
-
-export const baseHost = API_HOST + ':' + API_PORT
-export const baseURL = baseHost + '/rest/'
+import router from "../router";
 
 export function initAxios() {
-  axios.defaults.baseURL = baseURL
-  axios.defaults.headers.post['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
+  axios.interceptors.response.use(function (response) {
+    return response;
+  }, function (error) {
+    if (401 === error.response.status) {
+      window.location.href = '/#/login';
+      router.push({name: 'login'})
+    } else {
+      return Promise.reject(error);
+    }
+  });
 }

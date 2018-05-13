@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueRouter from 'vue-router'
 import {ClientTable} from 'vue-tables-2'
 import BootstrapVue from 'bootstrap-vue'
 import 'vue-awesome/icons'
