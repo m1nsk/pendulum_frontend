@@ -5,6 +5,10 @@ export function getMessageList () {
   return client.get('/message')
 }
 
+export function getMessageByChannelList (channelId) {
+  return client.get('/message/channel/' + channelId)
+}
+
 export function getMessage (id) {
   return client.get('/message/' + id)
 }

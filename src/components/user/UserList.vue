@@ -2,7 +2,6 @@
   <div>
     <h1>Users</h1>
     <v-client-table :data="tableData" :columns="columns" :options="options">
-      <router-link slot="edit" slot-scope="props" :to="{name: 'userPage', params: {id: props.row.id}}"><icon name="eye"></icon> </router-link>
     </v-client-table>
   </div>
 </template>
@@ -13,7 +12,7 @@
     name: 'Users',
     data() {
       return {
-        columns: ['id', 'name', 'email', 'registered', 'roles', 'edit'],
+        columns: ['id', 'name', 'email', 'registered', 'roles'],
         tableData: [],
         options: {
           filterByColumn: false,
@@ -22,8 +21,7 @@
             name: 'Name',
             email: 'Email',
             registered: 'Registered',
-            roles: 'Roles',
-            edit: 'Edit'
+            roles: 'Roles'
           },
         }
       }

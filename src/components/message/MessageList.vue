@@ -8,24 +8,26 @@
 </template>
 
 <script>
-  import {getMessageList} from '@/api/message'
+  import {getMessageByChannelList} from '@/api/message'
   export default {
     name: 'Messages',
     data() {
       return {
-        columns: ['message', 'user'],
+        columns: ['message', 'date', 'user'],
         tableData: [],
         options: {
           filterByColumn: false,
           headings: {
             message: 'Message',
+            date: 'Date',
             user: 'User',
           },
         }
       }
     },
     created: function () {
-      let promise = getMessageList()
+      let id = this.$route.params.id;
+      let promise = getMessageByChannelList(id)
       promise.then((response) => {
         this.tableData = response.data
       })

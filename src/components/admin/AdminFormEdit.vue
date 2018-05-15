@@ -7,7 +7,8 @@
 <script>
   import Form from "@/components/Form"
   import VueFormGenerator from "vue-form-generator"
-  import {editUser, getUser} from '@/api/admin'
+  import {getUser} from '@/api/admin'
+  import {editUser} from '@/api/profile'
   export default {
     name: 'UserForm',
     components: {

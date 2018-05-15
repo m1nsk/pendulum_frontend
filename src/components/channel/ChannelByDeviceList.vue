@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import {getChannelList} from '@/api/channel'
+  import {getChannelByDeviceList} from '@/api/channel'
   export default {
     name: 'Channels',
     data() {
@@ -28,13 +28,14 @@
             messages: 'Messages',
             user: 'User',
             devices: 'Devices',
-
+            edit: 'Edit'
           },
         }
       }
     },
     created: function () {
-      let promise = getChannelList()
+      let id = this.$route.params.id
+      let promise = getChannelByDeviceList(id)
       promise.then((response) => {
         this.tableData = response.data
       })

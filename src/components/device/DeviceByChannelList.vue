@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import {getDeviceList} from '@/api/device'
+  import {getDeviceByChannelList} from '@/api/device'
   export default {
     name: 'Devices',
     data() {
@@ -30,7 +30,8 @@
       }
     },
     created: function () {
-      let promise = getDeviceList()
+      let id = this.$route.params.id
+      let promise = getDeviceByChannelList(id)
       promise.then((response) => {
         this.tableData = response.data
       })

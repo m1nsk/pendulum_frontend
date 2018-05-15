@@ -8,12 +8,16 @@ export function getUser (id) {
   return client.get('/profile/' + id)
 }
 
-export function deleteUser (id) {
-  return client.delete('/profile/' + id)
+export function getUserProfile () {
+  return client.get('/profile/profile')
+}
+
+export function deleteUser () {
+  return client.delete('/profile/')
 }
 
 export function createUser (formData) {
-  return client.post('/profile', formData)
+  return client.post('/registration', formData)
 }
 
 export function editUser (formData) {

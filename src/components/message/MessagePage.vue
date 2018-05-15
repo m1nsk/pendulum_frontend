@@ -13,14 +13,15 @@
     name: 'Messages',
     data() {
       return {
-        columns: ['message', 'user'],
+        columns: ['message', 'date', 'user'],
         tableData: [],
         options: {
           filterByColumn: false,
           headings: {
-            message: 'message',
-            user: 'User'
-          }
+            message: 'Message',
+            date: 'Date',
+            user: 'User',
+          },
         }
       }
     },
@@ -36,7 +37,7 @@
         let id = this.$route.params.id;
         let promise = deleteMessage(id)
         promise.then((response) => {
-          this.$router.push({name: 'messageList'})
+          this.$router.go(-1)
         });
       }
     }

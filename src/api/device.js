@@ -5,6 +5,10 @@ export function getDeviceList () {
   return client.get('/device')
 }
 
+export function getDeviceByChannelList (channelId) {
+  return client.get('/device/channel/' + channelId)
+}
+
 export function getDevice (id) {
   return client.get('/device/' + id)
 }

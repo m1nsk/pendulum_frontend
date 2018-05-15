@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h1>Channel</h1>
+    <h1>Channel page</h1>
     <v-client-table :data="tableData" :columns="columns" :options="options">
       <router-link slot="message" slot-scope="props" :to="{name: 'messagePage', params: {id: props.row.message.id}}">Message</router-link>
       <router-link slot="messages" slot-scope="props" :to="{name: 'messageList', params: {id: props.row.id}}">Messages</router-link>
       <router-link slot="user" slot-scope="props" :to="{name: 'userPage', params: {id: props.row.user.id}}">{{props.row.user.name}}</router-link>
       <router-link slot="devices" slot-scope="props" :to="{name: 'deviceList', params: {id: props.row.id}}">Devices</router-link>
-      <router-link slot="edit" slot-scope="props" :to="{name: 'channelPage', params: {id: props.row.id}}"><icon name="eye"></icon> </router-link>
+      <router-link slot="edit" slot-scope="props" :to="{name: 'channelEdit', params: {id: props.row.id}}"><icon name="edit"></icon> </router-link>
       <div slot="delete" slot-scope="props" @click="onDelete"><icon name="trash-alt"></icon> </div>
     </v-client-table>
   </div>
