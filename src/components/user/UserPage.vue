@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>User</h1>
+    <router-link :to="{name: 'userEdit'}">Edit User</router-link>
     <v-client-table :data="tableData" :columns="columns" :options="options">
       <router-link slot="edit" slot-scope="props" :to="{name: 'userEdit', params: {id: $route.params.id}}"><icon name="edit"></icon> </router-link>
       <div slot="delete" slot-scope="props" @click="onDelete"><icon name="trash-alt"></icon> </div>

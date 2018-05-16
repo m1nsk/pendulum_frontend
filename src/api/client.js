@@ -1,6 +1,6 @@
 import {API_HOST, API_PORT} from "./config"
 import axios from 'axios'
-import router from '../router/index'
+import interceptor from './interceptor'
 
 var baseHost = API_HOST + ':' + API_PORT
 var baseURL = baseHost + '/rest/'
@@ -13,15 +13,7 @@ export const client = function () {
     },
     withCredentials: true
   })
-  result.interceptors.response.use(function (response) {
-    return response;
-  }, function (error) {
-    if (401 === error.response.status) {
-      router.push({name: 'login'})
-    } else {
-      return Promise.reject(error);
-    }
-  })
+  interceptor(result)
   return result
 }()
 

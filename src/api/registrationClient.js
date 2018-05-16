@@ -6,11 +6,11 @@ let baseHost = 'http://localhost' + ':' + API_PORT
 let baseURL = baseHost
 
 
-export const clientLogin = function () {
+export const registrationClient = function () {
   let result = axios.create({
     baseURL: baseURL,
     headers: {
-     'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/json'
     },
     withCredentials: true
   })

@@ -1,4 +1,5 @@
 import {client} from './client'
+import {registrationClient} from './registrationClient'
 
 export function getUserList () {
   return client.get('/profile/')
@@ -17,7 +18,7 @@ export function deleteUser () {
 }
 
 export function createUser (formData) {
-  return client.post('/registration', formData)
+  return registrationClient.post('/registration', formData)
 }
 
 export function editUser (formData) {

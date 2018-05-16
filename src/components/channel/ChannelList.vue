@@ -1,8 +1,9 @@
 <template>
   <div>
     <h1>Channels</h1>
+    <router-link :to="{name: 'channelCreate'}">Create Channel</router-link>
     <v-client-table :data="tableData" :columns="columns" :options="options">
-      <router-link slot="message" slot-scope="props" :to="{name: 'messagePage', params: {id: props.row.message.id}}">Message</router-link>
+      <router-link v-if="props.row.message !== undefined" slot="message" slot-scope="props" :to="{name: 'messagePage', params: {id: props.row.message.id}}">Message</router-link>
       <router-link slot="messages" slot-scope="props" :to="{name: 'messageList', params: {id: props.row.id}}">Messages</router-link>
       <router-link slot="user" slot-scope="props" :to="{name: 'userPage', params: {id: props.row.user.id}}">{{props.row.user.name}}</router-link>
       <router-link slot="devices" slot-scope="props" :to="{name: 'deviceByChannelList', params: {id: props.row.id}}">Devices</router-link>

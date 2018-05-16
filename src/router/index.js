@@ -14,12 +14,14 @@ import AdminForm from '@/components/admin/AdminForm'
 import AdminFormEdit from '@/components/admin/AdminFormEdit'
 
 import DeviceList from '@/components/device/DeviceList'
+import DeviceAddList from '@/components/device/DeviceAddList'
 import DeviceByChannelList from '@/components/device/DeviceByChannelList'
 import DevicePage from '@/components/device/DevicePage'
 import DeviceForm from '@/components/device/DeviceForm'
 import DeviceFormEdit from '@/components/device/DeviceFormEdit'
 
 import MessageList from '@/components/message/MessageList'
+import MessageCurrentByDeviceList from '@/components/message/MessageCurrentByDeviceList'
 import MessagePage from '@/components/message/MessagePage'
 import MessageForm from '@/components/message/MessageForm'
 
@@ -43,7 +45,7 @@ export default new Router({
     {path: '/user', name: 'userList', component: UserList},
     {path: '/user/:id', name: 'userPage', component: UserPage },
     {path: '/profile', name: 'userProfile', component: UserProfile },
-    {path: '/user/:id/edit', name: 'userEdit', component: UserFormEdit},
+    {path: '/profile/edit', name: 'userEdit', component: UserFormEdit},
 
     {path: '/admin', name: 'adminList', component: AdminList},
     {path: '/admin/create', name: 'adminCreate', component: AdminForm},
@@ -52,12 +54,14 @@ export default new Router({
 
 
     {path: '/device', name: 'deviceList', component: DeviceList},
+    {path: '/channel/:channelId/device/:deviceId', name: 'DeviceAddList', component: DeviceAddList},
     {path: '/device/channel/:id', name: 'deviceByChannelList', component: DeviceByChannelList},
     {path: '/device/create', name: 'deviceCreate', component: DeviceForm},
     {path: '/device/:id', name: 'devicePage', component: DevicePage},
     {path: '/device/:id/edit', name: 'deviceEdit', component: DeviceFormEdit},
 
     {path: '/message/channel/:id', name: 'messageList', component: MessageList},
+    {path: '/message/device/:id', name: 'messageCurrentByDeviceList', component: MessageCurrentByDeviceList},
     {path: '/message/:id', name: 'messagePage', component: MessagePage},
 
     {path: '/channel', name: 'channelList', component: ChannelList,},

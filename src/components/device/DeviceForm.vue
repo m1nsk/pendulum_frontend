@@ -42,7 +42,7 @@
               featured: true,
               required: true,
               disabled: false,
-              placeholder: "Device's name",
+              placeholder: "Device's serial",
               validator: VueFormGenerator.validators.string
             },]
           },

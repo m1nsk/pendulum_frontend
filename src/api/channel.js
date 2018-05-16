@@ -9,6 +9,10 @@ export function getChannelByDeviceList (deviceId) {
   return client.get('/channel/device/' + deviceId)
 }
 
+export function addDevice (channelId, deviceId) {
+  return client.put('/channel/'+ channelId + '/device/' + deviceId)
+}
+
 export function getChannel (id) {
   return client.get('/channel/' + id)
 }

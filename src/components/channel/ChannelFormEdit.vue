@@ -51,16 +51,13 @@
         }
       }
     },
-    mounted: function () {
+    created: function () {
       let id = this.$route.params.id;
       let promise = getChannel(id)
       promise.then((response) => {
         this.model = response.data;
         console.log(this.model)
       })
-        .catch(e => {
-          // this.$router.push({name: 'error'})
-        })
     }
   }
 </script>

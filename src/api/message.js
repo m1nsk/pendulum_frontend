@@ -9,6 +9,10 @@ export function getMessageByChannelList (channelId) {
   return client.get('/message/channel/' + channelId)
 }
 
+export function getCurrentMessageByDevice (deviceId) {
+  return client.get('/message/device/' + deviceId)
+}
+
 export function getMessage (id) {
   return client.get('/message/' + id)
 }
