@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 import axios from 'axios'
 import {ClientTable} from 'vue-tables-2'
 import BootstrapVue from 'bootstrap-vue'
@@ -15,6 +16,7 @@ Vue.config.productionTip = false
 
 Vue.use(ClientTable)
 Vue.use(BootstrapVue)
+Vue.use(Vuex)
 Vue.component('icon', Icon)
 
 
@@ -22,6 +24,7 @@ Vue.component('icon', Icon)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

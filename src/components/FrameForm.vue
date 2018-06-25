@@ -1,19 +1,11 @@
 <template>
   <div style="width: 50%; margin: 0 auto">
-    <device-form :schema="schema" :model="model"></device-form>
+    <vue-form-generator :schema="schema.schema" :model="model" :options="schema.formOptions"></vue-form-generator>
+    <!--<input type="submit" :disabled="disabled" @click="submitForm"/>-->
+
     <form id="upload" method="post" enctype="multipart/form-data">
-      <div id="drop">
-        Drop Here
-
-        <a>Browse</a>
-        <input v-show="frameType == 'single'" name="single" type="file" @change="sync"/>
-        <input v-show="frameType == 'array'" name="array" type="file" @change="sync" multiple/>
-      </div>
-
-      <ul>
-        <!-- загрузки будут показаны здесь -->
-      </ul>
-
+        <input v-if="frameType == 'single'" ref="single" type="file" @change="sync"/>
+        <input v-else-if="frameType == 'array'" ref="multiple" type="file" @change="sync" multiple/>
     </form>
     <img class="img_preview" v-for="item in this.src" :src="item" />
   </div>
@@ -116,8 +108,15 @@
         return this.isEmpty ? '' : '';
       },
       frameType () {
-        if (this.prevModelType !== this.model.type)
+        if (this.prevModelType !== this.model.type) {
           this.content.length = 0
+          if (this.$refs.single !== undefined) {
+            this.$refs.single.value = ""
+          }
+          if (this.$refs.multiple !== undefined) {
+            this.$refs.multiple.value = ""
+          }
+        }
         this.prevModelType = this.model.type
         return this.model.type
       }
