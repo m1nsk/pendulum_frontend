@@ -1,7 +1,21 @@
 <template>
   <div style="width: 50%; margin: 0 auto">
     <device-form :schema="schema" :model="model"></device-form>
-    <device-form :schema="addFormSchema" :model="addFormModel"></device-form>
+    <form id="upload" method="post" enctype="multipart/form-data">
+      <div id="drop">
+        Drop Here
+
+        <a>Browse</a>
+        <input v-show="frameType == 'single'" name="single" type="file" @change="sync"/>
+        <input v-show="frameType == 'array'" name="array" type="file" @change="sync" multiple/>
+      </div>
+
+      <ul>
+        <!-- загрузки будут показаны здесь -->
+      </ul>
+
+    </form>
+    <img class="img_preview" v-for="item in this.src" :src="item" />
   </div>
 </template>
 
@@ -53,19 +67,59 @@
             validateAfterLoad: true,
             validateAfterChanged: true
           }
+        },
+        content: []
+      }
+    },
+    methods: {
+      selectImage (file) {
+        this.file = file
+        let reader = new FileReader()
+        reader.onload = this.onImageLoad
+        reader.readAsDataURL(file)
+      },
+
+      /**
+       * Gets File image object from specified {Event}
+       *
+       * @param {Event} e
+       */
+      sync (e) {
+        this.content.length = 0
+        e.preventDefault()
+        let arr = e.target.files
+        for (let i = 0; i < arr.length; i++) {
+          this.selectImage(arr[i])
         }
+        // this.selectImage(e.target.files[0])
+      },
+
+      /**
+       * New image load handler. Emits 'input' event
+       *
+       * @param {Event} e
+       */
+      onImageLoad (e) {
+        this.content.push(e.target.result)
       }
     },
     computed: {
-      addFormSchema() {
-        if (this.model.type == "array") {
-          return this.schema
+      /**
+       * Picture src
+       *
+       * @return {String}
+       */
+      src () {
+        if (this.content) {
+          return this.content
         }
+        return this.isEmpty ? '' : '';
       },
-      addFormModel() {
-        if (this.model.type == "array") {
-          return this.model
-        }
+      frameType () {
+        if (this.prevModelType !== this.model.type)
+          this.content.length = 0
+        this.prevModelType = this.model.type
+        return this.model.type
       }
     }
   }
@@ -73,7 +127,10 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .img_preview {
+    width: 50px;
+    height: 50px;
+  }
 </style>
 
 
