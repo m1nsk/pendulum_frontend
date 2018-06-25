@@ -7,6 +7,7 @@ import UserPage from '@/components/user/UserPage'
 import UserProfile from '@/components/user/UserProfile'
 import UserFormEdit from '@/components/user/UserFormEdit'
 import UserForm from '@/components/user/UserForm'
+import FrameForm from '@/components/FrameForm'
 
 import AdminList from '@/components/admin/AdminList'
 import AdminPage from '@/components/admin/AdminPage'
@@ -41,6 +42,7 @@ export default new Router({
     {path: '/', name: 'HelloWorld', component: HelloWorld},
     {path: '/error', name: 'error', component: ErrorPage},
     {path: '/registration', name: 'registration', component: UserForm},
+    {path: '/frame', name: 'frame', component: FrameForm},
 
     {path: '/user', name: 'userList', component: UserList},
     {path: '/user/:id', name: 'userPage', component: UserPage },
